@@ -1,0 +1,46 @@
+# Dependency folders
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+frontend/.env
+
+# Build outputs
+dist/
+backend/dist/
+frontend/dist/
+build/
+
+# Local databases (SQLite)
+*.db
+*.db-journal
+*.sqlite
+backend/prisma/dev.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE config files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

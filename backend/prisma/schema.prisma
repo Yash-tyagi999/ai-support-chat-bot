@@ -1,0 +1,31 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Conversation {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  metadata  String?
+  messages  Message[]
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender         String       // "user" | "ai"
+  text           String
+  timestamp      DateTime     @default(now())
+}
+
+model FAQ {
+  id        String   @id @default(uuid())
+  question  String   @unique
+  answer    String
+  createdAt DateTime @default(now())
+}
