@@ -3,6 +3,8 @@ import { FAQ } from "../types/chat.types";
 interface SidebarProps {
   onQuickAsk: (questionText: string) => void;
   isSending: boolean;
+  isMobileOpen?: boolean;
+  onCloseMobile?: () => void;
 }
 
 const sampleFaqs: FAQ[] = [
@@ -12,15 +14,20 @@ const sampleFaqs: FAQ[] = [
   { q: "Do you ship to USA?", desc: "Confirm shipping capabilities to the US." },
 ];
 
-export default function Sidebar({ onQuickAsk, isSending }: SidebarProps) {
+export default function Sidebar({ onQuickAsk, isSending, onCloseMobile }: SidebarProps) {
   return (
     <aside className="info-sidebar">
       <div className="brand-header">
         <div className="brand-logo">S</div>
-        <div>
+        <div style={{ flexGrow: 1 }}>
           <h1 className="brand-name">Store Support</h1>
           <p className="tagline">Customer Support Portal</p>
         </div>
+        {onCloseMobile && (
+          <button className="sidebar-close-btn" onClick={onCloseMobile} aria-label="Close sidebar">
+            &times;
+          </button>
+        )}
       </div>
 
       <div className="card">

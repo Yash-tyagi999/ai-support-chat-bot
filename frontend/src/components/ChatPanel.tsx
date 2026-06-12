@@ -13,6 +13,7 @@ interface ChatPanelProps {
   setError: (error: string | null) => void;
   onSend: (text: string) => void;
   onReset: () => void;
+  onToggleSidebar?: () => void;
 }
 
 export default function ChatPanel({
@@ -25,11 +26,21 @@ export default function ChatPanel({
   setError,
   onSend,
   onReset,
+  onToggleSidebar,
 }: ChatPanelProps) {
   return (
     <main className="chat-panel">
       <header className="chat-header">
         <div className="chat-agent-info">
+          {onToggleSidebar && (
+            <button className="menu-toggle-btn" onClick={onToggleSidebar} aria-label="Toggle Info Panel">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+              </svg>
+            </button>
+          )}
           <div className="agent-avatar">
             AI
             <div className="status-dot"></div>

@@ -81,9 +81,104 @@ body {
   .app-container {
     grid-template-columns: 1fr;
   }
+  
   .info-sidebar {
-    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
   }
+
+  .sidebar-open .info-sidebar {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 90;
+    animation: fadeIn var(--transition-fast);
+  }
+
+  .menu-toggle-btn {
+    display: flex !important;
+  }
+  
+  .sidebar-close-btn {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .chat-header {
+    padding: 1rem;
+  }
+  .messages-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .message-wrapper {
+    max-width: 90%;
+  }
+  .chat-footer {
+    padding: 1rem 1rem 1.5rem 1rem;
+  }
+  .chat-input {
+    padding: 0.75rem 1rem;
+  }
+  .char-counter {
+    right: 55px;
+    bottom: -18px;
+  }
+}
+
+/* Base styles for menu and close buttons */
+.menu-toggle-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.25rem;
+  border-radius: 4px;
+  transition: color var(--transition-fast);
+}
+
+.menu-toggle-btn:hover {
+  color: var(--text-title);
+}
+
+.sidebar-close-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.75rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color var(--transition-fast);
+}
+
+.sidebar-close-btn:hover {
+  color: var(--text-title);
 }
 
 /* Left Panel - Support Portal View */
