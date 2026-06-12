@@ -22,19 +22,8 @@ const chatLimiter = rateLimit({
   legacyHeaders: false, // Disable deprecated headers
 });
 
-// Enable CORS for frontend client
-const allowedOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000'];
-if (process.env.FRONTEND_URL) {
-  const customOrigins = process.env.FRONTEND_URL.split(',').map((o) => o.trim());
-  allowedOrigins.push(...customOrigins);
-}
-
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
+// Enable CORS for all origins in development and production
+app.use(cors());
 
 // Body parser middleware
 app.use(express.json());
